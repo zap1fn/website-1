@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="html_title">HTML Grundlagen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <div class="logo" data-i18n="logo">Code4Beginners</div>
+
+            <div class="language-switcher">
+                <button class="lang-btn" data-lang="de"><img src="https://flagcdn.com/32x24/de.png" alt="DE"><span class="lang-label">Deutsch</span></button>
+                <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/32x24/gb.png" alt="GB"><span class="lang-label">English</span></button>
+                <button class="lang-btn" data-lang="es"><img src="https://flagcdn.com/32x24/es.png" alt="ES"><span class="lang-label">Español</span></button>
+                <button class="lang-btn" data-lang="fr"><img src="https://flagcdn.com/32x24/fr.png" alt="FR"><span class="lang-label">Français</span></button>
+                <button class="lang-btn" data-lang="it"><img src="https://flagcdn.com/32x24/it.png" alt="IT"><span class="lang-label">Italiano</span></button>
+            </div>
+
+            <nav>
+                <a href="index.html" data-i18n="nav_home">Start</a>
+                <a href="levels.html" data-i18n="nav_levels">10 Levels</a>
+                <a href="html-basics.html" class="active" data-i18n="nav_html">HTML Grundlagen</a>
+                <a href="css-basics.html" data-i18n="nav_css">CSS Grundlagen</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== SEITEN-KOPF ===== -->
+    <section class="page-header">
+        <div class="container">
+            <h2 data-i18n="html_title">HTML Grundlagen</h2>
+            <p data-i18n="html_sub">Die Sprache hinter jeder Website – einfach erklärt.</p>
+        </div>
+    </section>
+
+    <!-- ===== INHALT ===== -->
+    <section>
+        <div class="container">
+            <a href="index.html" class="back-link" data-i18n="html_back">← Zurück zur Startseite</a>
+
+            <!-- LEKTION 1 -->
+            <div class="lesson fade-in">
+                <h3 data-i18n="html_lesson1_title">Was ist HTML?</h3>
+                <p data-i18n="html_lesson1_text">HTML (HyperText Markup Language) ist die Standard-Auszeichnungssprache für Websites. Stell dir vor, du schreibst einen Text und markierst mit bestimmten Zeichen, was Überschrift, was Absatz und was Bild ist.</p>
+                <p data-i18n="html_lesson1_example">Ein einfaches HTML-Dokument sieht so aus:</p>
+                <div class="code-box">
+                    <span class="comment">&lt;!-- Das ist ein Kommentar --&gt;</span><br>
+                    <span class="tag">&lt;h1&gt;</span>Meine erste Website<span class="tag">&lt;/h1&gt;</span><br>
+                    <span class="tag">&lt;p&gt;</span>Das ist ein <span class="attr">Absatz</span> mit Text.<span class="tag">&lt;/p&gt;</span><br>
+                    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://google.de"</span><span class="tag">&gt;</span>Ein Link<span class="tag">&lt;/a&gt;</span>
+                </div>
+            </div>
+
+            <!-- BILD -->
+            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&h=450&fit=crop&q=80"
+                 alt="HTML Code" class="content-img">
+
+            <!-- LEKTION 2 -->
+            <div class="lesson fade-in">
+                <h3 data-i18n="html_lesson2_title">Wichtige HTML-Tags</h3>
+                <p data-i18n="html_lesson2_text">Diese Tags solltest du als Anfänger kennen:</p>
+                <ul>
+                    <li data-i18n="html_tag1"><strong>&lt;h1&gt; bis &lt;h6&gt;</strong> – Überschriften (h1 ist die größte)</li>
+                    <li data-i18n="html_tag2"><strong>&lt;p&gt;</strong> – Ein Absatz (Paragraph)</li>
+                    <li data-i18n="html_tag3"><strong>&lt;a&gt;</strong> – Ein Link zu einer anderen Seite</li>
+                    <li data-i18n="html_tag4"><strong>&lt;img&gt;</strong> – Ein Bild einfügen</li>
+                    <li data-i18n="html_tag5"><strong>&lt;div&gt;</strong> – Ein Bereich (Container)</li>
+                </ul>
+            </div>
+
+            <!-- LEKTION 3 -->
+            <div class="lesson fade-in">
+                <h3 data-i18n="html_lesson3_title">Attribute</h3>
+                <p data-i18n="html_lesson3_text">Tags können Attribute haben – das sind Zusatzinformationen. Zum Beispiel:</p>
+                <div class="code-box">
+                    <span class="tag">&lt;a</span> <span class="attr">href</span>=<span class="value">"https://example.com"</span><span class="tag">&gt;</span>Klick mich<span class="tag">&lt;/a&gt;</span>
+                </div>
+                <p data-i18n="html_attr_example" style="display:none;"></p>
+            </div>
+
+            <!-- NAVIGATION -->
+            <div class="btn-group">
+                <a href="index.html" class="btn btn-outline" data-i18n="html_back">← Zurück zur Startseite</a>
+                <a href="css-basics.html" class="btn" data-i18n="html_next">Weiter zu CSS →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p data-i18n="footer_text">© 2026 Code4Beginners – Aus Liebe zum Lernen 💜</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

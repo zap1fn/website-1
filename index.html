@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="logo">Code4Beginners</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="container">
+            <div class="logo" data-i18n="logo">Code4Beginners</div>
+
+            <!-- SPRACHAUSWAHL mit Flaggen -->
+            <div class="language-switcher">
+                <button class="lang-btn" data-lang="de"><img src="https://flagcdn.com/32x24/de.png" alt="DE"><span class="lang-label">Deutsch</span></button>
+                <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/32x24/gb.png" alt="GB"><span class="lang-label">English</span></button>
+                <button class="lang-btn" data-lang="es"><img src="https://flagcdn.com/32x24/es.png" alt="ES"><span class="lang-label">Español</span></button>
+                <button class="lang-btn" data-lang="fr"><img src="https://flagcdn.com/32x24/fr.png" alt="FR"><span class="lang-label">Français</span></button>
+                <button class="lang-btn" data-lang="it"><img src="https://flagcdn.com/32x24/it.png" alt="IT"><span class="lang-label">Italiano</span></button>
+            </div>
+
+            <nav>
+                <a href="index.html" class="active" data-i18n="nav_home">Start</a>
+                <a href="levels.html" data-i18n="nav_levels">10 Levels</a>
+                <a href="html-basics.html" data-i18n="nav_html">HTML Grundlagen</a>
+                <a href="css-basics.html" data-i18n="nav_css">CSS Grundlagen</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=200&h=200&fit=crop&crop=face&q=80"
+                 alt="Laptop" class="hero-img">
+            <h2 data-i18n="hero_title">Coding als <span>Anfänger</span> lernen</h2>
+            <p data-i18n="hero_text">Du willst programmieren lernen? Perfekt! Diese Seite zeigt dir die ersten Schritte – einfach und verständlich erklärt.</p>
+            <a href="html-basics.html" class="btn" data-i18n="hero_btn">Los geht's!</a>
+        </div>
+    </section>
+
+    <!-- ===== WARUM CODING ===== -->
+    <section>
+        <div class="container">
+            <h2 data-i18n="s1_title">Warum Coding lernen?</h2>
+            <p class="section-subtitle" data-i18n="s1_sub">In der digitalen Welt ist Programmieren eine Superkraft.</p>
+
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🎨</div>
+                    <h3 data-i18n="s1_card1_title">Kreativität</h3>
+                    <p data-i18n="s1_card1_text">Baue eigene Websites, Apps und Spiele.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">💼</div>
+                    <h3 data-i18n="s1_card2_title">Karriere</h3>
+                    <p data-i18n="s1_card2_text">Entwickler werden überall gesucht.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🧠</div>
+                    <h3 data-i18n="s1_card3_title">Logik</h3>
+                    <p data-i18n="s1_card3_text">Du lernst Probleme strukturiert zu lösen.</p>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">🚀</div>
+                    <h3 data-i18n="s1_card4_title">Zukunft</h3>
+                    <p data-i18n="s1_card4_text">Technologie verstehen und mitgestalten.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BILD-ZEILE ===== -->
+    <section>
+        <div class="container">
+            <div class="img-row">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop&q=80" alt="Coding">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=300&fit=crop&q=80" alt="Code on screen">
+                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&h=300&fit=crop&q=80" alt="Programming">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LERNPFAD ===== -->
+    <section>
+        <div class="container">
+            <h2 data-i18n="s2_title">Dein Lernpfad</h2>
+            <p class="section-subtitle" data-i18n="s2_sub">So startest du als absoluter Anfänger:</p>
+
+            <div class="lesson fade-in">
+                <h3 data-i18n="step1_title">1. HTML – Die Struktur</h3>
+                <p data-i18n="step1_text">HTML ist das Grundgerüst jeder Website. Wie die Knochen eines Körpers.</p>
+                <a href="html-basics.html" class="btn btn-outline" data-i18n="nav_html">HTML Grundlagen</a>
+            </div>
+
+            <div class="lesson fade-in">
+                <h3 data-i18n="step2_title">2. CSS – Das Design</h3>
+                <p data-i18n="step2_text">CSS macht alles schön: Farben, Layout, Schriftarten.</p>
+                <a href="css-basics.html" class="btn btn-outline" data-i18n="nav_css">CSS Grundlagen</a>
+            </div>
+
+            <div class="lesson fade-in">
+                <h3 data-i18n="step3_title">3. JavaScript – Leben einhauchen</h3>
+                <p data-i18n="step3_text">JS macht die Seite interaktiv: Klicks, Animationen, Formulare.</p>
+                <a href="#" class="btn btn-outline" style="opacity:0.5;cursor:default;">Kommt bald!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p data-i18n="footer_text">© 2026 Code4Beginners – Aus Liebe zum Lernen 💜</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

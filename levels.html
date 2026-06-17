@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="levels_title">10 Coding-Levels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo" data-i18n="logo">Code4Beginners</div>
+            <div class="language-switcher">
+                <button class="lang-btn" data-lang="de"><img src="https://flagcdn.com/32x24/de.png" alt="DE"><span class="lang-label">Deutsch</span></button>
+                <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/32x24/gb.png" alt="GB"><span class="lang-label">English</span></button>
+                <button class="lang-btn" data-lang="es"><img src="https://flagcdn.com/32x24/es.png" alt="ES"><span class="lang-label">Español</span></button>
+                <button class="lang-btn" data-lang="fr"><img src="https://flagcdn.com/32x24/fr.png" alt="FR"><span class="lang-label">Français</span></button>
+                <button class="lang-btn" data-lang="it"><img src="https://flagcdn.com/32x24/it.png" alt="IT"><span class="lang-label">Italiano</span></button>
+            </div>
+            <nav>
+                <a href="index.html" data-i18n="nav_home">Start</a>
+                <a href="levels.html" class="active" data-i18n="nav_levels">10 Levels</a>
+                <a href="html-basics.html" data-i18n="nav_html">HTML Grundlagen</a>
+                <a href="css-basics.html" data-i18n="nav_css">CSS Grundlagen</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h2 data-i18n="levels_title">10 Coding-Levels</h2>
+            <p data-i18n="levels_sub">Lerne Schritt für Schritt HTML & CSS</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <!-- Fortschrittsbalken -->
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <!-- Level Auswahl -->
+            <div class="levels-nav" id="levelsNav"></div>
+
+            <!-- Level Karte -->
+            <div class="level-card" id="levelCard">
+                <div id="levelContent"></div>
+
+                <!-- Ergebnis -->
+                <div class="level-result" id="levelResult"></div>
+
+                <!-- Hinweis -->
+                <div class="level-hint" id="levelHint"></div>
+
+                <!-- Aktionen -->
+                <div class="level-actions">
+                    <button class="btn" id="checkBtn" data-i18n="level_check">Prüfen</button>
+                    <button class="btn btn-outline" id="hintBtn" data-i18n="level_hint_btn">💡 Hinweis</button>
+                    <button class="btn btn-outline" id="solutionBtn" data-i18n="level_solution">Lösung zeigen</button>
+                    <button class="btn btn-outline" id="resetBtn" data-i18n="level_reset">Zurücksetzen</button>
+                </div>
+
+                <!-- Navigation -->
+                <div class="level-nav-buttons">
+                    <button class="btn btn-outline" id="prevBtn" data-i18n="level_prev">← Vorheriges Level</button>
+                    <button class="btn" id="nextBtn" data-i18n="level_next">Nächstes Level →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p data-i18n="footer_text">© 2026 Code4Beginners – Aus Liebe zum Lernen 💜</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // ===== LEVEL DATEN (10 Levels von leicht bis sehr schwer) =====
+        const levels = [
+            {
+                title: "Deine erste Überschrift",
+                difficulty: "Sehr leicht",
+                difficultyClass: "easy",
+                task: "Schreibe eine Überschrift mit <code>&lt;h1&gt;</code> die <strong>Hallo Welt!</strong> anzeigt.",
+                hint: "Jeder HTML-Tag öffnet und schließt sich: <code>&lt;h1&gt;...&lt;/h1&gt;</code>",
+                check: (code) => code.includes('<h1>') && code.includes('</h1>') && code.includes('Hallo'),
+                solution: '<h1>Hallo Welt!</h1>'
+            },
+            {
+                title: "Ein Absatz",
+                difficulty: "Sehr leicht",
+                difficultyClass: "easy",
+                task: "Erstelle einen Absatz mit <code>&lt;p&gt;</code> und schreibe: <strong>Das ist mein erster Absatz.</strong>",
+                hint: "Ein Absatz wird mit <code>&lt;p&gt;</code> geöffnet und <code>&lt;/p&gt;</code> geschlossen.",
+                check: (code) => code.includes('<p>') && code.includes('</p>') && code.includes('Absatz'),
+                solution: '<p>Das ist mein erster Absatz.</p>'
+            },
+            {
+                title: "Ein Link",
+                difficulty: "Leicht",
+                difficultyClass: "easy",
+                task: "Erstelle einen Link zu <strong>https://google.de</strong> mit dem Text <strong>Zu Google</strong>.",
+                hint: "Ein Link braucht ein <code>href</code>-Attribut: <code>&lt;a href=\"...\"&gt;Text&lt;/a&gt;</code>",
+                check: (code) => code.includes('<a') && code.includes('href') && code.includes('</a>') && code.includes('Google'),
+                solution: '<a href="https://google.de">Zu Google</a>'
+            },
+            {
+                title: "Ein Bild",
+                difficulty: "Leicht",
+                difficultyClass: "easy",
+                task: "Füge ein Bild ein mit <code>&lt;img&gt;</code>. Nutze als Quelle: <strong>https://picsum.photos/200</strong> und als Alternativtext <strong>Zufallsbild</strong>.",
+                hint: "Das <code>img</code>-Tag ist selbstschließend: <code>&lt;img src=\"...\" alt=\"...\"&gt;</code>",
+                check: (code) => code.includes('<img') && code.includes('src=') && code.includes('alt='),
+                solution: '<img src="https://picsum.photos/200" alt="Zufallsbild">'
+            },
+            {
+                title: "Eine Liste",
+                difficulty: "Mittel",
+                difficultyClass: "medium",
+                task: "Erstelle eine ungeordnete Liste mit <strong>3 Punkten</strong>: HTML, CSS, JavaScript",
+                hint: "Eine Liste braucht <code>&lt;ul&gt;</code> für die Liste und <code>&lt;li&gt;</code> für jeden Punkt.",
+                check: (code) => code.includes('<ul>') && code.includes('<li>') && (code.match(/<li>/g) || []).length >= 2,
+                solution: '<ul>\n    <li>HTML</li>\n    <li>CSS</li>\n    <li>JavaScript</li>\n</ul>'
+            },
+            {
+                title: "Fett & Kursiv",
+                difficulty: "Mittel",
+                difficultyClass: "medium",
+                task: "Schreibe einen Absatz mit <strong>fettem</strong> und <em>kursivem</em> Text. Der Satz lautet: <strong>Das ist wichtig</strong> und <em>das ist betont</em>.",
+                hint: "Verwende <code>&lt;strong&gt;</code> für fett und <code>&lt;em&gt;</code> für kursiv.",
+                check: (code) => code.includes('<strong>') && code.includes('</strong>') && code.includes('<em>') && code.includes('</em>'),
+                solution: '<p><strong>Das ist wichtig</strong> und <em>das ist betont</em>.</p>'
+            },
+            {
+                title: "Eine bunte Box",
+                difficulty: "Mittel",
+                difficultyClass: "medium",
+                task: "Erstelle einen <code>&lt;div&gt;</code> mit <strong>lila Hintergrund</strong>, <strong>weißer Schrift</strong> und <strong>20px Innenabstand</strong>. Der Text lautet: Hallo, ich bin eine Box!",
+                hint: "Nutze das <code>style</code>-Attribut: <code>style=\"background:lila;color:white;padding:20px;\"</code>",
+                check: (code) => code.includes('<div') && code.includes('</div>') && code.includes('background'),
+                solution: '<div style="background:#6C63FF;color:white;padding:20px;border-radius:10px;">Hallo, ich bin eine Box!</div>'
+            },
+            {
+                title: "Deine Mini-Webseite",
+                difficulty: "Schwer",
+                difficultyClass: "hard",
+                task: "Baue eine Mini-Seite mit: einer <strong>Überschrift</strong>, einem <strong>Absatz</strong>, einem <strong>Bild</strong> und einem <strong>Link</strong>.",
+                hint: "Kombiniere einfach alle Tags die du gelernt hast: <code>h1</code>, <code>p</code>, <code>img</code>, <code>a</code>.",
+                check: (code) => code.includes('<h1') && code.includes('<p') && code.includes('<img') && code.includes('<a'),
+                solution: '<h1>Meine erste Seite</h1>\n<p>Das ist meine erste richtige Webseite.</p>\n<img src="https://picsum.photos/200" alt="Bild">\n<a href="https://google.de">Besuche Google</a>'
+            },
+            {
+                title: "Eine Tabelle",
+                difficulty: "Schwer",
+                difficultyClass: "hard",
+                task: "Erstelle eine Tabelle mit 2 Spalten (Name, Alter) und 2 Zeilen (Max 25, Lisa 30).",
+                hint: "Eine Tabelle braucht: <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> (Zeile), <code>&lt;th&gt;</code> (Kopf) und <code>&lt;td&gt;</code> (Daten).",
+                check: (code) => code.includes('<table>') && code.includes('<tr>') && (code.includes('<th>') || code.includes('<td>')),
+                solution: '<table border="1" style="border-collapse:collapse;width:100%;">\n    <tr>\n        <th>Name</th>\n        <th>Alter</th>\n    </tr>\n    <tr>\n        <td>Max</td>\n        <td>25</td>\n    </tr>\n    <tr>\n        <td>Lisa</td>\n        <td>30</td>\n    </tr>\n</table>'
+            },
+            {
+                title: "Ein Kontaktformular",
+                difficulty: "Sehr schwer",
+                difficultyClass: "hard",
+                task: "Baue ein Formular mit einem <strong>Textfeld</strong> (Name), einer <strong>E-Mail-Eingabe</strong> und einem <strong>Senden-Button</strong>.",
+                hint: "Ein Formular braucht: <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code> und <code>&lt;button&gt;</code>. Nutze <code>type=\"email\"</code> für die E-Mail.",
+                check: (code) => code.includes('<form') && code.includes('<input') && code.includes('<button'),
+                solution: '<form style="display:flex;flex-direction:column;gap:10px;max-width:300px;">\n    <input placeholder="Dein Name">\n    <input type="email" placeholder="Deine E-Mail">\n    <button style="background:#6C63FF;color:white;border:none;padding:10px;border-radius:5px;">Senden</button>\n</form>'
+            }
+        ];
+
+        // ===== LEVEL-LOGIK =====
+        let currentLevel = 0;
+        let completedLevels = JSON.parse(localStorage.getItem('completedLevels') || '[]');
+        let hintVisible = false;
+        let solutionVisible = false;
+
+        function saveProgress() {
+            localStorage.setItem('completedLevels', JSON.stringify(completedLevels));
+        }
+
+        function renderLevelNav() {
+            const nav = document.getElementById('levelsNav');
+            nav.innerHTML = '';
+            levels.forEach((level, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'level-tab';
+                if (i === currentLevel) btn.classList.add('active');
+                if (completedLevels.includes(i)) btn.classList.add('done');
+                btn.textContent = i + 1;
+                btn.onclick = () => switchLevel(i);
+                nav.appendChild(btn);
+            });
+        }
+
+        function switchLevel(index) {
+            currentLevel = index;
+            hintVisible = false;
+            solutionVisible = false;
+            document.getElementById('levelHint').classList.remove('show');
+            document.getElementById('levelResult').style.display = 'none';
+            renderLevel();
+            renderLevelNav();
+            updateProgress();
+        }
+
+        function renderLevel() {
+            const level = levels[currentLevel];
+            const container = document.getElementById('levelContent');
+
+            container.innerHTML = `
+                <div class="level-difficulty ${level.difficultyClass}">${level.difficulty}</div>
+                <h3>Level ${currentLevel + 1}: ${level.title}</h3>
+                <div class="level-desc">${level.task}</div>
+                <div class="editor-row">
+                    <div class="editor-area">
+                        <label data-i18n="level_task_label">Dein Code:</label>
+                        <textarea id="codeEditor">${solutionVisible ? level.solution : ''}</textarea>
+                    </div>
+                    <div class="preview-area">
+                        <label data-i18n="level_preview_label">Vorschau:</label>
+                        <iframe class="preview-frame" id="previewFrame" sandbox="allow-scripts"></iframe>
+                    </div>
+                </div>
+            `;
+
+            // Live-Vorschau aktualisieren
+            const editor = document.getElementById('codeEditor');
+            editor.addEventListener('input', updatePreview);
+            updatePreview();
+
+            // Buttons konfigurieren
+            document.getElementById('checkBtn').onclick = checkLevel;
+            document.getElementById('hintBtn').onclick = toggleHint;
+            document.getElementById('solutionBtn').onclick = showSolution;
+            document.getElementById('resetBtn').onclick = resetLevel;
+            document.getElementById('prevBtn').onclick = () => {
+                if (currentLevel > 0) switchLevel(currentLevel - 1);
+            };
+            document.getElementById('nextBtn').onclick = () => {
+                if (currentLevel < levels.length - 1) switchLevel(currentLevel + 1);
+            };
+            document.getElementById('prevBtn').style.visibility = currentLevel > 0 ? 'visible' : 'hidden';
+            document.getElementById('nextBtn').textContent = currentLevel < levels.length - 1
+                ? 'Nächstes Level →' : '🏆 Fertig!';
+
+            // Sprache auf neue Elemente anwenden
+            applyLangToNewElements();
+        }
+
+        function updatePreview() {
+            const code = document.getElementById('codeEditor').value;
+            const frame = document.getElementById('previewFrame');
+            const fullHtml = `<!DOCTYPE html><html><body style="font-family:sans-serif;padding:15px;">${code}</body></html>`;
+            frame.srcdoc = fullHtml;
+        }
+
+        function checkLevel() {
+            const code = document.getElementById('codeEditor').value;
+            const level = levels[currentLevel];
+            const result = document.getElementById('levelResult');
+
+            if (level.check(code)) {
+                result.className = 'level-result correct';
+                const msg = getTranslation('level_correct') || '✅ Richtig! Super gemacht!';
+                result.textContent = msg;
+                result.style.display = 'block';
+                if (!completedLevels.includes(currentLevel)) {
+                    completedLevels.push(currentLevel);
+                    saveProgress();
+                    renderLevelNav();
+                    updateProgress();
+                }
+            } else {
+                result.className = 'level-result wrong';
+                const msg = getTranslation('level_wrong') || '❌ Noch nicht ganz. Versuch\'s nochmal!';
+                result.textContent = msg;
+                result.style.display = 'block';
+            }
+        }
+
+        function toggleHint() {
+            const hintBox = document.getElementById('levelHint');
+            hintVisible = !hintVisible;
+            if (hintVisible) {
+                hintBox.textContent = '💡 ' + levels[currentLevel].hint;
+                hintBox.classList.add('show');
+            } else {
+                hintBox.classList.remove('show');
+            }
+        }
+
+        function showSolution() {
+            solutionVisible = true;
+            const editor = document.getElementById('codeEditor');
+            editor.value = levels[currentLevel].solution;
+            updatePreview();
+            document.getElementById('levelResult').style.display = 'none';
+        }
+
+        function resetLevel() {
+            solutionVisible = false;
+            hintVisible = false;
+            document.getElementById('levelHint').classList.remove('show');
+            document.getElementById('levelResult').style.display = 'none';
+            document.getElementById('codeEditor').value = '';
+            updatePreview();
+        }
+
+        function updateProgress() {
+            const fill = document.getElementById('progressFill');
+            const pct = levels.length > 0 ? (completedLevels.length / levels.length) * 100 : 0;
+            fill.style.width = pct + '%';
+        }
+
+        function getTranslation(key) {
+            const lang = localStorage.getItem('selectedLanguage') || 'de';
+            return translations && translations[lang] && translations[lang][key];
+        }
+
+        function applyLangToNewElements() {
+            const lang = localStorage.getItem('selectedLanguage') || 'de';
+            const t = translations && translations[lang];
+            if (t) {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (t[key] !== undefined) el.innerHTML = t[key];
+                });
+            }
+        }
+
+        // ===== START =====
+        renderLevelNav();
+        renderLevel();
+        updateProgress();
+
+        // Überschreibe switchLanguage um Levels neu zu rendern
+        const originalSwitch = window.switchLanguage;
+        if (originalSwitch) {
+            window.switchLanguage = function(lang) {
+                originalSwitch(lang);
+                renderLevel();
+            };
+        }
+    </script>
+</body>
+</html>
