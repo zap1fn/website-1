@@ -87,7 +87,9 @@ const translations = {
         level_correct: "✅ Richtig! Super gemacht!",
         level_wrong: "❌ Noch nicht ganz. Versuch's nochmal!",
         level_start: "Starte Level 1",
-        level_complete_all: "🎉 Alle Levels geschafft!"
+        level_complete_all: "🎉 Alle Levels geschafft!",
+        level_explain: "🤔 Warum ist das so?",
+        level_hint_close: "💡 Hinweise schließen"
     },
 
     // ===== ENGLISH =====
@@ -167,7 +169,9 @@ const translations = {
         level_correct: "✅ Correct! Great job!",
         level_wrong: "❌ Not quite. Try again!",
         level_start: "Start Level 1",
-        level_complete_all: "🎉 All levels completed!"
+        level_complete_all: "🎉 All levels completed!",
+        level_explain: "🤔 Why is that?",
+        level_hint_close: "💡 Close hints"
     },
 
     // ===== ESPAÑOL =====
@@ -247,7 +251,9 @@ const translations = {
         level_correct: "✅ ¡Correcto! ¡Bien hecho!",
         level_wrong: "❌ Casi. ¡Inténtalo de nuevo!",
         level_start: "Comenzar Nivel 1",
-        level_complete_all: "🎉 ¡Todos los niveles completados!"
+        level_complete_all: "🎉 ¡Todos los niveles completados!",
+        level_explain: "🤔 ¿Por qué es así?",
+        level_hint_close: "💡 Cerrar pistas"
     },
 
     // ===== FRANÇAIS =====
@@ -327,7 +333,9 @@ const translations = {
         level_correct: "✅ Correct ! Super travail !",
         level_wrong: "❌ Pas tout à fait. Réessaie !",
         level_start: "Commencer Niveau 1",
-        level_complete_all: "🎉 Tous les niveaux terminés !"
+        level_complete_all: "🎉 Tous les niveaux terminés !",
+        level_explain: "🤔 Pourquoi ?",
+        level_hint_close: "💡 Fermer les indices"
     },
 
     // ===== ITALIANO =====
@@ -407,7 +415,9 @@ const translations = {
         level_correct: "✅ Corretto! Ottimo lavoro!",
         level_wrong: "❌ Non proprio. Riprova!",
         level_start: "Inizia Livello 1",
-        level_complete_all: "🎉 Tutti i livelli completati!"
+        level_complete_all: "🎉 Tutti i livelli completati!",
+        level_explain: "🤔 Perché?",
+        level_hint_close: "💡 Chiudi suggerimenti"
     }
 };
 

@@ -57,7 +57,8 @@
                 <!-- Aktionen -->
                 <div class="level-actions">
                     <button class="btn" id="checkBtn" data-i18n="level_check">Prüfen</button>
-                    <button class="btn btn-outline" id="hintBtn" data-i18n="level_hint_btn">💡 Hinweis</button>
+                    <button class="btn btn-outline" id="hintBtn">💡 Hinweis <span class="hint-counter">1/3</span></button>
+                    <button class="btn btn-outline" id="explainBtn" data-i18n="level_explain">🤔 Warum ist das so?</button>
                     <button class="btn btn-outline" id="solutionBtn" data-i18n="level_solution">Lösung zeigen</button>
                     <button class="btn btn-outline" id="resetBtn" data-i18n="level_reset">Zurücksetzen</button>
                 </div>
@@ -82,93 +83,123 @@
         // ===== LEVEL DATEN (10 Levels von leicht bis sehr schwer) =====
         const levels = [
             {
-                title: "Deine erste Überschrift",
-                difficulty: "Sehr leicht",
-                difficultyClass: "easy",
+                title: "Deine erste Überschrift", difficulty: "Sehr leicht", difficultyClass: "easy",
                 task: "Schreibe eine Überschrift mit <code>&lt;h1&gt;</code> die <strong>Hallo Welt!</strong> anzeigt.",
-                hint: "Jeder HTML-Tag öffnet und schließt sich: <code>&lt;h1&gt;...&lt;/h1&gt;</code>",
-                check: (code) => code.includes('<h1>') && code.includes('</h1>') && code.includes('Hallo'),
+                hints: [
+                    "HTML-Tags haben immer einen öffnenden <code>&lt;tag&gt;</code> und schließenden <code>&lt;/tag&gt;</code> Teil.",
+                    "Die größte Überschrift ist <code>&lt;h1&gt;</code>. Es gibt auch <code>h2</code> bis <code>h6</code>.",
+                    "Schreibe: <code>&lt;h1&gt;Hallo Welt!&lt;/h1&gt;</code>"
+                ],
+                explanation: "Das <code>&lt;h1&gt;</code> ist die wichtigste Überschrift auf einer Seite. Suchmaschinen wie Google achten besonders darauf. Es gibt nur EINE <code>h1</code> pro Seite – das ist die Hauptüberschrift.",
+                check: (c) => c.includes('<h1>') && c.includes('</h1>') && c.includes('Hallo'),
                 solution: '<h1>Hallo Welt!</h1>'
             },
             {
-                title: "Ein Absatz",
-                difficulty: "Sehr leicht",
-                difficultyClass: "easy",
+                title: "Ein Absatz", difficulty: "Sehr leicht", difficultyClass: "easy",
                 task: "Erstelle einen Absatz mit <code>&lt;p&gt;</code> und schreibe: <strong>Das ist mein erster Absatz.</strong>",
-                hint: "Ein Absatz wird mit <code>&lt;p&gt;</code> geöffnet und <code>&lt;/p&gt;</code> geschlossen.",
-                check: (code) => code.includes('<p>') && code.includes('</p>') && code.includes('Absatz'),
+                hints: [
+                    "Ein Absatz wird mit <code>&lt;p&gt;</code> geöffnet und <code>&lt;/p&gt;</code> geschlossen.",
+                    "Alles zwischen <code>&lt;p&gt;</code> und <code>&lt;/p&gt;</code> wird als Textabsatz dargestellt.",
+                    "Schreibe: <code>&lt;p&gt;Das ist mein erster Absatz.&lt;/p&gt;</code>"
+                ],
+                explanation: "Der <code>&lt;p&gt;</code>-Tag steht für 'Paragraph'. Der Browser zeigt den Text als eigenen Block mit etwas Abstand nach oben und unten an. Perfekt für längere Texte!",
+                check: (c) => c.includes('<p>') && c.includes('</p>') && c.includes('Absatz'),
                 solution: '<p>Das ist mein erster Absatz.</p>'
             },
             {
-                title: "Ein Link",
-                difficulty: "Leicht",
-                difficultyClass: "easy",
+                title: "Ein Link", difficulty: "Leicht", difficultyClass: "easy",
                 task: "Erstelle einen Link zu <strong>https://google.de</strong> mit dem Text <strong>Zu Google</strong>.",
-                hint: "Ein Link braucht ein <code>href</code>-Attribut: <code>&lt;a href=\"...\"&gt;Text&lt;/a&gt;</code>",
-                check: (code) => code.includes('<a') && code.includes('href') && code.includes('</a>') && code.includes('Google'),
+                hints: [
+                    "Ein Link braucht ein <code>href</code>-Attribut für das Ziel.",
+                    "Der Aufbau: <code>&lt;a href=\"ZIEL\"&gt;Angezeigter Text&lt;/a&gt;</code>",
+                    "Schreibe: <code>&lt;a href=\"https://google.de\"&gt;Zu Google&lt;/a&gt;</code>"
+                ],
+                explanation: "Das <code>&lt;a&gt;</code>-Tag steht für 'Anchor' (Anker). Das <code>href</code>-Attribut bestimmt, wohin der Link führt. Ohne <code>href</code> ist es kein klickbarer Link!",
+                check: (c) => c.includes('<a') && c.includes('href') && c.includes('</a>') && c.includes('Google'),
                 solution: '<a href="https://google.de">Zu Google</a>'
             },
             {
-                title: "Ein Bild",
-                difficulty: "Leicht",
-                difficultyClass: "easy",
+                title: "Ein Bild", difficulty: "Leicht", difficultyClass: "easy",
                 task: "Füge ein Bild ein mit <code>&lt;img&gt;</code>. Nutze als Quelle: <strong>https://picsum.photos/200</strong> und als Alternativtext <strong>Zufallsbild</strong>.",
-                hint: "Das <code>img</code>-Tag ist selbstschließend: <code>&lt;img src=\"...\" alt=\"...\"&gt;</code>",
-                check: (code) => code.includes('<img') && code.includes('src=') && code.includes('alt='),
+                hints: [
+                    "Das <code>img</code>-Tag ist selbstschließend – es braucht kein <code>&lt;/img&gt;</code>.",
+                    "Es braucht zwei wichtige Attribute: <code>src</code> (Quelle) und <code>alt</code> (Alternativtext).",
+                    "Schreibe: <code>&lt;img src=\"https://picsum.photos/200\" alt=\"Zufallsbild\"&gt;</code>"
+                ],
+                explanation: "Der <code>alt</code>-Text ist super wichtig! Wenn das Bild nicht lädt, zeigt der Browser diesen Text an. Auch blinde Menschen nutzen ihn über Vorlese-Programme. Immer einen guten <code>alt</code>-Text angeben!",
+                check: (c) => c.includes('<img') && c.includes('src=') && c.includes('alt='),
                 solution: '<img src="https://picsum.photos/200" alt="Zufallsbild">'
             },
             {
-                title: "Eine Liste",
-                difficulty: "Mittel",
-                difficultyClass: "medium",
+                title: "Eine Liste", difficulty: "Mittel", difficultyClass: "medium",
                 task: "Erstelle eine ungeordnete Liste mit <strong>3 Punkten</strong>: HTML, CSS, JavaScript",
-                hint: "Eine Liste braucht <code>&lt;ul&gt;</code> für die Liste und <code>&lt;li&gt;</code> für jeden Punkt.",
-                check: (code) => code.includes('<ul>') && code.includes('<li>') && (code.match(/<li>/g) || []).length >= 2,
+                hints: [
+                    "Eine Liste braucht <code>&lt;ul&gt;</code> (unordered list) und <code>&lt;li&gt;</code> (list item).",
+                    "Jeder Punkt ist ein <code>&lt;li&gt;</code> innerhalb von <code>&lt;ul&gt;</code>.",
+                    "Schreibe: <code>&lt;ul&gt;&lt;li&gt;HTML&lt;/li&gt;&lt;li&gt;CSS&lt;/li&gt;&lt;li&gt;JavaScript&lt;/li&gt;&lt;/ul&gt;</code>"
+                ],
+                explanation: "Mit <code>&lt;ul&gt;</code> erstellst du eine Liste mit Aufzählungspunkten. Es gibt auch <code>&lt;ol&gt;</code> für nummerierte Listen. Listen sind perfekt für Aufzählungen, Menüs und Navigationen.",
+                check: (c) => c.includes('<ul>') && c.includes('<li>') && (c.match(/<li>/g) || []).length >= 2,
                 solution: '<ul>\n    <li>HTML</li>\n    <li>CSS</li>\n    <li>JavaScript</li>\n</ul>'
             },
             {
-                title: "Fett & Kursiv",
-                difficulty: "Mittel",
-                difficultyClass: "medium",
-                task: "Schreibe einen Absatz mit <strong>fettem</strong> und <em>kursivem</em> Text. Der Satz lautet: <strong>Das ist wichtig</strong> und <em>das ist betont</em>.",
-                hint: "Verwende <code>&lt;strong&gt;</code> für fett und <code>&lt;em&gt;</code> für kursiv.",
-                check: (code) => code.includes('<strong>') && code.includes('</strong>') && code.includes('<em>') && code.includes('</em>'),
+                title: "Fett & Kursiv", difficulty: "Mittel", difficultyClass: "medium",
+                task: "Schreibe einen Absatz: <strong>Das ist wichtig</strong> und <em>das ist betont</em>.",
+                hints: [
+                    "Nutze <code>&lt;strong&gt;</code> für fette Schrift und <code>&lt;em&gt;</code> für kursive Schrift.",
+                    "Beide Tags können innerhalb eines <code>&lt;p&gt;</code> verwendet werden.",
+                    "Schreibe: <code>&lt;p&gt;&lt;strong&gt;Das ist wichtig&lt;/strong&gt; und &lt;em&gt;das ist betont&lt;/em&gt;.&lt;/p&gt;</code>"
+                ],
+                explanation: "Früher nutzte man <code>&lt;b&gt;</code> (bold) und <code>&lt;i&gt;</code> (italic). Heute nimmt man <code>&lt;strong&gt;</code> und <code>&lt;em&gt;</code>, weil sie nicht nur das Aussehen ändern, sondern auch die Bedeutung betonen – wichtig für Screenreader!",
+                check: (c) => c.includes('<strong>') && c.includes('</strong>') && c.includes('<em>') && c.includes('</em>'),
                 solution: '<p><strong>Das ist wichtig</strong> und <em>das ist betont</em>.</p>'
             },
             {
-                title: "Eine bunte Box",
-                difficulty: "Mittel",
-                difficultyClass: "medium",
-                task: "Erstelle einen <code>&lt;div&gt;</code> mit <strong>lila Hintergrund</strong>, <strong>weißer Schrift</strong> und <strong>20px Innenabstand</strong>. Der Text lautet: Hallo, ich bin eine Box!",
-                hint: "Nutze das <code>style</code>-Attribut: <code>style=\"background:lila;color:white;padding:20px;\"</code>",
-                check: (code) => code.includes('<div') && code.includes('</div>') && code.includes('background'),
+                title: "Eine bunte Box", difficulty: "Mittel", difficultyClass: "medium",
+                task: "Erstelle einen <code>&lt;div&gt;</code> mit <strong>lila Hintergrund</strong>, <strong>weißer Schrift</strong>, <strong>20px Innenabstand</strong> und dem Text: Hallo, ich bin eine Box!",
+                hints: [
+                    "Nutze das <code>style</code>-Attribut für CSS direkt im HTML-Tag.",
+                    "Du brauchst: <code>background</code>, <code>color</code> und <code>padding</code>.",
+                    "Schreibe: <code>&lt;div style=\"background:#6C63FF;color:white;padding:20px;\"&gt;Hallo, ich bin eine Box!&lt;/div&gt;"
+                ],
+                explanation: "Der <code>&lt;div&gt;</code> ist ein universeller Container (eine Box). Mit CSS im <code>style</code>-Attribut bestimmst du das Aussehen. <code>padding</code> ist der Abstand INNERHALB der Box, <code>margin</code> wäre der Abstand AUSSERHALB.",
+                check: (c) => c.includes('<div') && c.includes('</div>') && c.includes('background'),
                 solution: '<div style="background:#6C63FF;color:white;padding:20px;border-radius:10px;">Hallo, ich bin eine Box!</div>'
             },
             {
-                title: "Deine Mini-Webseite",
-                difficulty: "Schwer",
-                difficultyClass: "hard",
+                title: "Deine Mini-Webseite", difficulty: "Schwer", difficultyClass: "hard",
                 task: "Baue eine Mini-Seite mit: einer <strong>Überschrift</strong>, einem <strong>Absatz</strong>, einem <strong>Bild</strong> und einem <strong>Link</strong>.",
-                hint: "Kombiniere einfach alle Tags die du gelernt hast: <code>h1</code>, <code>p</code>, <code>img</code>, <code>a</code>.",
-                check: (code) => code.includes('<h1') && code.includes('<p') && code.includes('<img') && code.includes('<a'),
+                hints: [
+                    "Kombiniere einfach die Tags aus den vorherigen Levels.",
+                    "Du brauchst: <code>h1</code>, <code>p</code>, <code>img</code> und <code>a</code>.",
+                    "Schreibe alle vier Tags nacheinander – jeder in einer eigenen Zeile."
+                ],
+                explanation: "Echte Websites bestehen aus vielen solcher Kombinationen! HTML ist wie Legosteine: Jeder Tag ist ein Stein, und du setzt sie zusammen. Mit diesen 4 Tags kannst du schon einfache Webseiten bauen.",
+                check: (c) => c.includes('<h1') && c.includes('<p') && c.includes('<img') && c.includes('<a'),
                 solution: '<h1>Meine erste Seite</h1>\n<p>Das ist meine erste richtige Webseite.</p>\n<img src="https://picsum.photos/200" alt="Bild">\n<a href="https://google.de">Besuche Google</a>'
             },
             {
-                title: "Eine Tabelle",
-                difficulty: "Schwer",
-                difficultyClass: "hard",
+                title: "Eine Tabelle", difficulty: "Schwer", difficultyClass: "hard",
                 task: "Erstelle eine Tabelle mit 2 Spalten (Name, Alter) und 2 Zeilen (Max 25, Lisa 30).",
-                hint: "Eine Tabelle braucht: <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> (Zeile), <code>&lt;th&gt;</code> (Kopf) und <code>&lt;td&gt;</code> (Daten).",
-                check: (code) => code.includes('<table>') && code.includes('<tr>') && (code.includes('<th>') || code.includes('<td>')),
+                hints: [
+                    "Eine Tabelle braucht: <code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code> (Zeile), <code>&lt;th&gt;</code> (Kopf) und <code>&lt;td&gt;</code> (Daten).",
+                    "Jede <code>&lt;tr&gt;</code> ist eine Zeile. Die erste Zeile enthält <code>&lt;th&gt;</code>, die anderen <code>&lt;td&gt;</code>.",
+                    "Baue: table → tr mit 2x th → tr mit 2x td → tr mit 2x td"
+                ],
+                explanation: "Tabellen waren früher das wichtigste Werkzeug für Layouts. Heute nutzt man sie nur noch für echte Tabellendaten. Die Struktur ist: Zeilen (&lt;tr&gt;) enthalten Zellen (&lt;th&gt; für Kopf, &lt;td&gt; für Daten).",
+                check: (c) => c.includes('<table>') && c.includes('<tr>') && (c.includes('<th>') || c.includes('<td>')),
                 solution: '<table border="1" style="border-collapse:collapse;width:100%;">\n    <tr>\n        <th>Name</th>\n        <th>Alter</th>\n    </tr>\n    <tr>\n        <td>Max</td>\n        <td>25</td>\n    </tr>\n    <tr>\n        <td>Lisa</td>\n        <td>30</td>\n    </tr>\n</table>'
             },
             {
-                title: "Ein Kontaktformular",
-                difficulty: "Sehr schwer",
-                difficultyClass: "hard",
+                title: "Ein Kontaktformular", difficulty: "Sehr schwer", difficultyClass: "hard",
                 task: "Baue ein Formular mit einem <strong>Textfeld</strong> (Name), einer <strong>E-Mail-Eingabe</strong> und einem <strong>Senden-Button</strong>.",
-                hint: "Ein Formular braucht: <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code> und <code>&lt;button&gt;</code>. Nutze <code>type=\"email\"</code> für die E-Mail.",
-                check: (code) => code.includes('<form') && code.includes('<input') && code.includes('<button'),
+                hints: [
+                    "Ein Formular braucht <code>&lt;form&gt;</code>, <code>&lt;input&gt;</code> und <code>&lt;button&gt;</code>.",
+                    "Für E-Mail nutze <code>type=\"email\"</code>. Der Button bekommt <code>type=\"submit\"</code>.",
+                    "Baue: form → input (Name) → input (Email) → button (Senden)"
+                ],
+                explanation: "Formulare sind das Herz der Interaktion im Web! <code>&lt;input&gt;</code> erzeugt Eingabefelder. Der <code>type</code> bestimmt die Art (Text, Email, Passwort...). Der <code>&lt;button&gt;</code> sendet die Daten ab. Ohne JavaScript passiert hier noch nichts – aber das kommt später!",
+                check: (c) => c.includes('<form') && c.includes('<input') && c.includes('<button'),
                 solution: '<form style="display:flex;flex-direction:column;gap:10px;max-width:300px;">\n    <input placeholder="Dein Name">\n    <input type="email" placeholder="Deine E-Mail">\n    <button style="background:#6C63FF;color:white;border:none;padding:10px;border-radius:5px;">Senden</button>\n</form>'
             }
         ];
@@ -176,8 +207,9 @@
         // ===== LEVEL-LOGIK =====
         let currentLevel = 0;
         let completedLevels = JSON.parse(localStorage.getItem('completedLevels') || '[]');
-        let hintVisible = false;
+        let hintLevel = 0;
         let solutionVisible = false;
+        let explanationVisible = false;
 
         function saveProgress() {
             localStorage.setItem('completedLevels', JSON.stringify(completedLevels));
@@ -199,9 +231,11 @@
 
         function switchLevel(index) {
             currentLevel = index;
-            hintVisible = false;
+            hintLevel = 0;
             solutionVisible = false;
+            explanationVisible = false;
             document.getElementById('levelHint').classList.remove('show');
+            document.getElementById('levelExplain').classList.remove('show');
             document.getElementById('levelResult').style.display = 'none';
             renderLevel();
             renderLevelNav();
@@ -211,6 +245,11 @@
         function renderLevel() {
             const level = levels[currentLevel];
             const container = document.getElementById('levelContent');
+            const hintTexts = [];
+            for (let i = 0; i < hintLevel; i++) {
+                const cls = i === 0 ? 'hint-1' : i === 1 ? 'hint-2' : 'hint-3';
+                hintTexts.push(`<div class="level-hint show ${cls}">🔹 ${level.hints[i]}</div>`);
+            }
 
             container.innerHTML = `
                 <div class="level-difficulty ${level.difficultyClass}">${level.difficulty}</div>
@@ -226,16 +265,17 @@
                         <iframe class="preview-frame" id="previewFrame" sandbox="allow-scripts"></iframe>
                     </div>
                 </div>
+                ${hintTexts.join('')}
+                <div class="level-explain" id="levelExplain">${explanationVisible ? '<strong>🤔 Warum?</strong> ' + level.explanation : ''}</div>
             `;
 
-            // Live-Vorschau aktualisieren
             const editor = document.getElementById('codeEditor');
             editor.addEventListener('input', updatePreview);
             updatePreview();
 
-            // Buttons konfigurieren
             document.getElementById('checkBtn').onclick = checkLevel;
             document.getElementById('hintBtn').onclick = toggleHint;
+            document.getElementById('explainBtn').onclick = toggleExplanation;
             document.getElementById('solutionBtn').onclick = showSolution;
             document.getElementById('resetBtn').onclick = resetLevel;
             document.getElementById('prevBtn').onclick = () => {
@@ -248,14 +288,28 @@
             document.getElementById('nextBtn').textContent = currentLevel < levels.length - 1
                 ? 'Nächstes Level →' : '🏆 Fertig!';
 
-            // Sprache auf neue Elemente anwenden
+            updateHintButton();
             applyLangToNewElements();
+            if (explanationVisible) document.getElementById('levelExplain').classList.add('show');
+        }
+
+        function updateHintButton() {
+            const btn = document.getElementById('hintBtn');
+            const total = levels[currentLevel].hints.length;
+            if (hintLevel === 0) {
+                btn.innerHTML = '💡 Hinweis <span class="hint-counter">1/' + total + '</span>';
+            } else if (hintLevel < total) {
+                btn.innerHTML = '💡 Hinweis <span class="hint-counter">' + (hintLevel + 1) + '/' + total + '</span>';
+            } else {
+                const t = getTranslation('level_hint_close');
+                btn.textContent = t || '💡 Hinweise schließen';
+            }
         }
 
         function updatePreview() {
             const code = document.getElementById('codeEditor').value;
             const frame = document.getElementById('previewFrame');
-            const fullHtml = `<!DOCTYPE html><html><body style="font-family:sans-serif;padding:15px;">${code}</body></html>`;
+            const fullHtml = '<!DOCTYPE html><html><body style="font-family:sans-serif;padding:15px;">' + code + '</body></html>';
             frame.srcdoc = fullHtml;
         }
 
@@ -266,8 +320,7 @@
 
             if (level.check(code)) {
                 result.className = 'level-result correct';
-                const msg = getTranslation('level_correct') || '✅ Richtig! Super gemacht!';
-                result.textContent = msg;
+                result.textContent = getTranslation('level_correct') || '✅ Richtig! Super gemacht!';
                 result.style.display = 'block';
                 if (!completedLevels.includes(currentLevel)) {
                     completedLevels.push(currentLevel);
@@ -277,20 +330,33 @@
                 }
             } else {
                 result.className = 'level-result wrong';
-                const msg = getTranslation('level_wrong') || '❌ Noch nicht ganz. Versuch\'s nochmal!';
-                result.textContent = msg;
+                result.textContent = getTranslation('level_wrong') || '❌ Noch nicht ganz. Versuch\'s nochmal!';
                 result.style.display = 'block';
             }
         }
 
         function toggleHint() {
-            const hintBox = document.getElementById('levelHint');
-            hintVisible = !hintVisible;
-            if (hintVisible) {
-                hintBox.textContent = '💡 ' + levels[currentLevel].hint;
-                hintBox.classList.add('show');
+            const total = levels[currentLevel].hints.length;
+            if (hintLevel >= total) {
+                hintLevel = 0;
             } else {
-                hintBox.classList.remove('show');
+                hintLevel++;
+            }
+            const hintBox = document.getElementById('levelHint');
+            if (hintLevel === 0) {
+                hintBox.innerHTML = '';
+            }
+            renderLevel();
+        }
+
+        function toggleExplanation() {
+            explanationVisible = !explanationVisible;
+            const box = document.getElementById('levelExplain');
+            if (explanationVisible) {
+                box.innerHTML = '<strong>🤔 Warum?</strong> ' + levels[currentLevel].explanation;
+                box.classList.add('show');
+            } else {
+                box.classList.remove('show');
             }
         }
 
@@ -304,11 +370,14 @@
 
         function resetLevel() {
             solutionVisible = false;
-            hintVisible = false;
-            document.getElementById('levelHint').classList.remove('show');
+            hintLevel = 0;
+            explanationVisible = false;
+            document.getElementById('levelHint').innerHTML = '';
+            document.getElementById('levelExplain').classList.remove('show');
             document.getElementById('levelResult').style.display = 'none';
             document.getElementById('codeEditor').value = '';
             updatePreview();
+            renderLevel();
         }
 
         function updateProgress() {
@@ -338,7 +407,6 @@
         renderLevel();
         updateProgress();
 
-        // Überschreibe switchLanguage um Levels neu zu rendern
         const originalSwitch = window.switchLanguage;
         if (originalSwitch) {
             window.switchLanguage = function(lang) {
