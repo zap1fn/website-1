@@ -4,101 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="css_title">CSS Grundlagen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header>
-        <div class="container">
-            <div class="logo" data-i18n="logo">Code4Beginners</div>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo pixel" data-i18n="logo">Code4Beginners</a>
 
-            <div class="language-switcher">
-                <button class="lang-btn" data-lang="de"><img src="https://flagcdn.com/32x24/de.png" alt="DE"><span class="lang-label">Deutsch</span></button>
-                <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/32x24/gb.png" alt="GB"><span class="lang-label">English</span></button>
-                <button class="lang-btn" data-lang="es"><img src="https://flagcdn.com/32x24/es.png" alt="ES"><span class="lang-label">Español</span></button>
-                <button class="lang-btn" data-lang="fr"><img src="https://flagcdn.com/32x24/fr.png" alt="FR"><span class="lang-label">Français</span></button>
-                <button class="lang-btn" data-lang="it"><img src="https://flagcdn.com/32x24/it.png" alt="IT"><span class="lang-label">Italiano</span></button>
+            <div class="header-center">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="de" title="Deutsch">
+                        <img src="https://flagcdn.com/32x24/de.png" alt="DE">
+                    </button>
+                    <button class="lang-btn" data-lang="en" title="English">
+                        <img src="https://flagcdn.com/32x24/gb.png" alt="GB">
+                    </button>
+                    <button class="lang-btn" data-lang="es" title="Español">
+                        <img src="https://flagcdn.com/32x24/es.png" alt="ES">
+                    </button>
+                    <button class="lang-btn" data-lang="fr" title="Français">
+                        <img src="https://flagcdn.com/32x24/fr.png" alt="FR">
+                    </button>
+                    <button class="lang-btn" data-lang="it" title="Italiano">
+                        <img src="https://flagcdn.com/32x24/it.png" alt="IT">
+                    </button>
+                </div>
+
+                <nav class="nav">
+                    <a href="index.html" data-i18n="nav_home">Start</a>
+                    <a href="levels.html" data-i18n="nav_levels">10 Levels</a>
+                    <a href="html-basics.html" data-i18n="nav_html">HTML Grundlagen</a>
+                    <a href="css-basics.html" class="active" data-i18n="nav_css">CSS Grundlagen</a>
+                </nav>
             </div>
 
-            <nav>
-                <a href="index.html" data-i18n="nav_home">Start</a>
-                <a href="levels.html" data-i18n="nav_levels">10 Levels</a>
-                <a href="html-basics.html" data-i18n="nav_html">HTML Grundlagen</a>
-                <a href="css-basics.html" class="active" data-i18n="nav_css">CSS Grundlagen</a>
-            </nav>
+            <button id="darkModeToggle" class="theme-btn" aria-label="Dark Mode umschalten">
+                <span class="icon-sun">☀️</span>
+                <span class="icon-moon">🌙</span>
+            </button>
+
+            <button class="menu-btn" aria-label="Menü">MENU</button>
         </div>
     </header>
 
-    <!-- ===== SEITEN-KOPF ===== -->
-    <section class="page-header">
-        <div class="container">
-            <h2 data-i18n="css_title">CSS Grundlagen</h2>
-            <p data-i18n="css_sub">Farben, Layout und schönes Design – ganz einfach.</p>
+    <section class="hero" style="padding:60px 20px 70px;">
+        <div class="hero-grid-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+            <h1 class="h-display" data-i18n="css_title">CSS Grundlagen</h1>
+            <p class="hero-text" data-i18n="css_sub">Farben, Layout und schönes Design – ganz einfach.</p>
         </div>
     </section>
 
-    <!-- ===== INHALT ===== -->
     <section>
-        <div class="container">
-            <a href="index.html" class="back-link" data-i18n="css_home">← Zur Startseite</a>
+        <div class="container" style="max-width:750px;">
+            <a href="index.html" class="btn-ghost" data-i18n="css_home" style="margin-bottom:30px;">← Zur Startseite</a>
 
-            <!-- LEKTION 1 -->
-            <div class="lesson fade-in">
-                <h3 data-i18n="css_lesson1_title">Was ist CSS?</h3>
-                <p data-i18n="css_lesson1_text">CSS (Cascading Style Sheets) ist die Gestaltungssprache des Webs. Während HTML die Struktur vorgibt, bestimmt CSS das Aussehen: Farben, Schriftarten, Abstände, Positionen.</p>
-                <p data-i18n="css_lesson1_compare">Stell dir vor: HTML ist ein Haus (Zimmer, Wände, Türen), CSS ist die Inneneinrichtung (Farbe der Wände, Möbel, Deko).</p>
-            </div>
-
-            <!-- BILD -->
-            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=450&fit=crop&q=80"
-                 alt="Design Workspace" class="content-img">
-
-            <!-- LEKTION 2 -->
-            <div class="lesson fade-in">
-                <h3 data-i18n="css_lesson2_title">So schreibt man CSS</h3>
-                <p data-i18n="css_lesson2_text">CSS besteht aus Regeln. Jede Regel hat einen <strong>Selektor</strong> (wer?) und einen <strong>Block</strong> mit Eigenschaften (was?).</p>
-                <div class="code-box">
-                    <span class="comment">/* Alle h1 Überschriften werden blau */</span><br>
-                    <span class="tag">h1</span> {<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">color</span>: <span class="value">blue</span>;<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">font-size</span>: <span class="value">32px</span>;<br>
-                    }
+            <div class="step-card" style="margin-bottom:30px;">
+                <div>
+                    <h3 class="step-title" data-i18n="css_lesson1_title">Was ist CSS?</h3>
+                    <p class="step-desc" data-i18n="css_lesson1_text">CSS (Cascading Style Sheets) ist die Gestaltungssprache des Webs. Während HTML die Struktur vorgibt, bestimmt CSS das Aussehen: Farben, Schriftarten, Abstände, Positionen.</p>
+                    <p class="step-desc" style="margin-top:10px;" data-i18n="css_lesson1_compare">Stell dir vor: HTML ist ein Haus (Zimmer, Wände, Türen), CSS ist die Inneneinrichtung (Farbe der Wände, Möbel, Deko).</p>
                 </div>
             </div>
 
-            <!-- LEKTION 3 -->
-            <div class="lesson fade-in">
-                <h3 data-i18n="css_lesson3_title">Wichtige CSS-Eigenschaften</h3>
-                <p data-i18n="css_lesson3_text">Diese Eigenschaften brauchst du am häufigsten:</p>
-                <ul>
-                    <li data-i18n="css_prop1"><strong>color</strong> – Textfarbe</li>
-                    <li data-i18n="css_prop2"><strong>background</strong> – Hintergrundfarbe oder -bild</li>
-                    <li data-i18n="css_prop3"><strong>font-size</strong> – Schriftgröße</li>
-                    <li data-i18n="css_prop4"><strong>margin / padding</strong> – Abstände außen / innen</li>
-                    <li data-i18n="css_prop5"><strong>display: flex</strong> – Modernes Layout</li>
-                </ul>
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=450&fit=crop&q=80"
+                 alt="Design Workspace" class="content-img">
+
+            <div class="step-card" style="margin-bottom:30px;margin-top:30px;">
+                <div>
+                    <h3 class="step-title" data-i18n="css_lesson2_title">So schreibt man CSS</h3>
+                    <p class="step-desc" style="margin-bottom:10px;" data-i18n="css_lesson2_text">CSS besteht aus Regeln. Jede Regel hat einen <strong>Selektor</strong> (wer?) und einen <strong>Block</strong> mit Eigenschaften (was?).</p>
+                    <div class="code-box">
+                        <span class="comment">/* Alle h1 Überschriften werden blau */</span><br>
+                        <span class="tag">h1</span> {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">color</span>: <span class="value">blue</span>;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="attr">font-size</span>: <span class="value">32px</span>;<br>
+                    }
+                    </div>
+                </div>
             </div>
 
-            <!-- BILD-ZEILE -->
+            <div class="step-card" style="margin-bottom:30px;">
+                <div>
+                    <h3 class="step-title" data-i18n="css_lesson3_title">Wichtige CSS-Eigenschaften</h3>
+                    <p class="step-desc" style="margin-bottom:10px;" data-i18n="css_lesson3_text">Diese Eigenschaften brauchst du am häufigsten:</p>
+                    <ul class="step-desc" style="list-style:disc;padding-left:20px;">
+                        <li data-i18n="css_prop1"><strong>color</strong> – Textfarbe</li>
+                        <li data-i18n="css_prop2"><strong>background</strong> – Hintergrundfarbe oder -bild</li>
+                        <li data-i18n="css_prop3"><strong>font-size</strong> – Schriftgröße</li>
+                        <li data-i18n="css_prop4"><strong>margin / padding</strong> – Abstände außen / innen</li>
+                        <li data-i18n="css_prop5"><strong>display: flex</strong> – Modernes Layout</li>
+                    </ul>
+                </div>
+            </div>
+
             <div class="img-row">
                 <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=300&fit=crop&q=80" alt="Code editor">
                 <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400&h=300&fit=crop&q=80" alt="Coding screen">
             </div>
 
-            <!-- NAVIGATION -->
-            <div class="btn-group">
-                <a href="html-basics.html" class="btn btn-outline" data-i18n="css_back">← Zurück zu HTML</a>
-                <a href="index.html" class="btn" data-i18n="css_home">← Zur Startseite</a>
+            <div style="display:flex;gap:15px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
+                <a href="html-basics.html" class="btn-ghost" data-i18n="css_back">← Zurück zu HTML</a>
+                <a href="index.html" class="btn-primary" data-i18n="css_home">← Zur Startseite</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer>
-        <div class="container">
-            <p data-i18n="footer_text">© 2026 Code4Beginners – Aus Liebe zum Lernen 💜</p>
-        </div>
+    <footer class="footer">
+        <p class="footer-text" data-i18n="footer_text">© 2026 Code4Beginners – Aus Liebe zum Lernen <span class="text-cyan">💜</span></p>
     </footer>
 
     <script src="script.js"></script>

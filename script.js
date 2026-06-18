@@ -1,4 +1,27 @@
 /* ==========================================
+   🌓 DARK MODE
+   ========================================== */
+
+function getSavedTheme() {
+    return localStorage.getItem('theme') || 'light';
+}
+
+function saveTheme(theme) {
+    localStorage.setItem('theme', theme);
+}
+
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    saveTheme(theme);
+}
+
+function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+}
+
+/* ==========================================
    🌍 SPRACHWECHSLER & ANIMATIONEN
    ========================================== */
 
@@ -11,7 +34,8 @@ const translations = {
         nav_html: "HTML Grundlagen",
         nav_css: "CSS Grundlagen",
         // Hero
-        hero_title: "Coding als <span>Anfänger</span> lernen",
+        hero_badge: "Level 1 · Insert Coin",
+        hero_title: "Coding als <span class='text-blue'>Anfänger</span> lernen",
         hero_text: "Du willst programmieren lernen? Perfekt! Diese Seite zeigt dir die ersten Schritte – einfach und verständlich erklärt.",
         hero_btn: "Los geht's!",
         // Section 1
@@ -26,6 +50,7 @@ const translations = {
         s1_card4_title: "Zukunft",
         s1_card4_text: "Technologie verstehen und mitgestalten.",
         // Section 2 - Lernpfad
+        s2_eyebrow: "Quest Log",
         s2_title: "Dein Lernpfad",
         s2_sub: "So startest du als absoluter Anfänger:",
         step1_title: "1. HTML – Die Struktur",
@@ -34,6 +59,7 @@ const translations = {
         step2_text: "CSS macht alles schön: Farben, Layout, Schriftarten.",
         step3_title: "3. JavaScript – Leben einhauchen",
         step3_text: "JS macht die Seite interaktiv: Klicks, Animationen, Formulare.",
+        step3_soon: "Kommt bald!",
         // Footer
         footer_text: "© 2026 Code4Beginners – Aus Liebe zum Lernen 💜",
         // HTML Seite
@@ -98,7 +124,8 @@ const translations = {
         nav_home: "Home",
         nav_html: "HTML Basics",
         nav_css: "CSS Basics",
-        hero_title: "Learn Coding as a <span>Beginner</span>",
+        hero_badge: "Level 1 · Insert Coin",
+        hero_title: "Learn Coding as a <span class='text-blue'>Beginner</span>",
         hero_text: "Want to learn programming? Perfect! This site shows you the first steps – simple and easy to understand.",
         hero_btn: "Let's go!",
         s1_title: "Why learn coding?",
@@ -111,6 +138,7 @@ const translations = {
         s1_card3_text: "Learn to solve problems systematically.",
         s1_card4_title: "Future",
         s1_card4_text: "Understand and shape technology.",
+        s2_eyebrow: "Quest Log",
         s2_title: "Your Learning Path",
         s2_sub: "How to start as an absolute beginner:",
         step1_title: "1. HTML – The Structure",
@@ -119,6 +147,7 @@ const translations = {
         step2_text: "CSS makes everything beautiful: colors, layout, fonts.",
         step3_title: "3. JavaScript – Bring it to life",
         step3_text: "JS makes the page interactive: clicks, animations, forms.",
+        step3_soon: "Coming soon!",
         footer_text: "© 2026 Code4Beginners – Made with love for learning 💜",
         html_title: "HTML Basics",
         html_sub: "The language behind every website – explained simply.",
@@ -180,7 +209,8 @@ const translations = {
         nav_home: "Inicio",
         nav_html: "HTML Básico",
         nav_css: "CSS Básico",
-        hero_title: "Aprende Coding como <span>Principiante</span>",
+        hero_badge: "Level 1 · Insert Coin",
+        hero_title: "Aprende Coding como <span class='text-blue'>Principiante</span>",
         hero_text: "¿Quieres aprender a programar? ¡Perfecto! Esta web te muestra los primeros pasos – simple y fácil de entender.",
         hero_btn: "¡Vamos!",
         s1_title: "¿Por qué aprender coding?",
@@ -193,6 +223,7 @@ const translations = {
         s1_card3_text: "Aprende a resolver problemas de forma estructurada.",
         s1_card4_title: "Futuro",
         s1_card4_text: "Comprende y da forma a la tecnología.",
+        s2_eyebrow: "Quest Log",
         s2_title: "Tu Ruta de Aprendizaje",
         s2_sub: "Cómo empezar como principiante absoluto:",
         step1_title: "1. HTML – La Estructura",
@@ -201,6 +232,7 @@ const translations = {
         step2_text: "CSS lo hace todo bonito: colores, diseño, fuentes.",
         step3_title: "3. JavaScript – Dale vida",
         step3_text: "JS hace la página interactiva: clics, animaciones, formularios.",
+        step3_soon: "¡Pronto!",
         footer_text: "© 2026 Code4Beginners – Hecho con amor por aprender 💜",
         html_title: "HTML Básico",
         html_sub: "El lenguaje detrás de cada web – explicado de forma sencilla.",
@@ -262,7 +294,8 @@ const translations = {
         nav_home: "Accueil",
         nav_html: "HTML Base",
         nav_css: "CSS Base",
-        hero_title: "Apprendre le Code en tant que <span>Débutant</span>",
+        hero_badge: "Level 1 · Insert Coin",
+        hero_title: "Apprendre le Code en tant que <span class='text-blue'>Débutant</span>",
         hero_text: "Tu veux apprendre à programmer ? Parfait ! Ce site te montre les premiers pas – simple et facile à comprendre.",
         hero_btn: "C'est parti !",
         s1_title: "Pourquoi apprendre le code ?",
@@ -275,6 +308,7 @@ const translations = {
         s1_card3_text: "Apprends à résoudre des problèmes de façon structurée.",
         s1_card4_title: "Avenir",
         s1_card4_text: "Comprendre et façonner la technologie.",
+        s2_eyebrow: "Quest Log",
         s2_title: "Ton Parcours d'Apprentissage",
         s2_sub: "Comment commencer en tant que débutant absolu :",
         step1_title: "1. HTML – La Structure",
@@ -283,6 +317,7 @@ const translations = {
         step2_text: "CSS rend tout beau : couleurs, mise en page, polices.",
         step3_title: "3. JavaScript – Donne vie",
         step3_text: "JS rend la page interactive : clics, animations, formulaires.",
+        step3_soon: "Bientôt !",
         footer_text: "© 2026 Code4Beginners – Fait avec amour pour l'apprentissage 💜",
         html_title: "HTML Base",
         html_sub: "Le langage derrière chaque site web – expliqué simplement.",
@@ -344,7 +379,8 @@ const translations = {
         nav_home: "Home",
         nav_html: "HTML Base",
         nav_css: "CSS Base",
-        hero_title: "Impara il Coding da <span>Principiante</span>",
+        hero_badge: "Level 1 · Insert Coin",
+        hero_title: "Impara il Coding da <span class='text-blue'>Principiante</span>",
         hero_text: "Vuoi imparare a programmare? Perfetto! Questo sito ti mostra i primi passi – semplice e facile da capire.",
         hero_btn: "Cominciamo!",
         s1_title: "Perché imparare il coding?",
@@ -357,6 +393,7 @@ const translations = {
         s1_card3_text: "Impara a risolvere problemi in modo strutturato.",
         s1_card4_title: "Futuro",
         s1_card4_text: "Comprendere e plasmare la tecnologia.",
+        s2_eyebrow: "Quest Log",
         s2_title: "Il Tuo Percorso di Apprendimento",
         s2_sub: "Come iniziare da principiante assoluto:",
         step1_title: "1. HTML – La Struttura",
@@ -365,6 +402,7 @@ const translations = {
         step2_text: "CSS rende tutto bello: colori, layout, caratteri.",
         step3_title: "3. JavaScript – Dai vita",
         step3_text: "JS rende la pagina interattiva: click, animazioni, moduli.",
+        step3_soon: "Prossimamente!",
         footer_text: "© 2026 Code4Beginners – Fatto con amore per l'apprendimento 💜",
         html_title: "HTML Base",
         html_sub: "Il linguaggio dietro ogni sito web – spiegato semplicemente.",
@@ -460,6 +498,15 @@ function switchLanguage(lang) {
 // === SEITEN BEIM LADEN ÜBERSETZEN ===
 document.addEventListener('DOMContentLoaded', () => {
     const savedLang = getSavedLanguage();
+
+    // Dark Mode initialisieren
+    const savedTheme = getSavedTheme();
+    applyTheme(savedTheme);
+
+    const themeBtn = document.getElementById('darkModeToggle');
+    if (themeBtn) {
+        themeBtn.addEventListener('click', toggleTheme);
+    }
 
     // Sprach-Buttons klickbar machen
     document.querySelectorAll('.lang-btn').forEach(btn => {

@@ -4,38 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="levels_title">10 Coding-Levels</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <div class="logo" data-i18n="logo">Code4Beginners</div>
-            <div class="language-switcher">
-                <button class="lang-btn" data-lang="de"><img src="https://flagcdn.com/32x24/de.png" alt="DE"><span class="lang-label">Deutsch</span></button>
-                <button class="lang-btn" data-lang="en"><img src="https://flagcdn.com/32x24/gb.png" alt="GB"><span class="lang-label">English</span></button>
-                <button class="lang-btn" data-lang="es"><img src="https://flagcdn.com/32x24/es.png" alt="ES"><span class="lang-label">Español</span></button>
-                <button class="lang-btn" data-lang="fr"><img src="https://flagcdn.com/32x24/fr.png" alt="FR"><span class="lang-label">Français</span></button>
-                <button class="lang-btn" data-lang="it"><img src="https://flagcdn.com/32x24/it.png" alt="IT"><span class="lang-label">Italiano</span></button>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo pixel" data-i18n="logo">Code4Beginners</a>
+
+            <div class="header-center">
+                <div class="lang-switcher">
+                    <button class="lang-btn active" data-lang="de" title="Deutsch">
+                        <img src="https://flagcdn.com/32x24/de.png" alt="DE">
+                    </button>
+                    <button class="lang-btn" data-lang="en" title="English">
+                        <img src="https://flagcdn.com/32x24/gb.png" alt="GB">
+                    </button>
+                    <button class="lang-btn" data-lang="es" title="Español">
+                        <img src="https://flagcdn.com/32x24/es.png" alt="ES">
+                    </button>
+                    <button class="lang-btn" data-lang="fr" title="Français">
+                        <img src="https://flagcdn.com/32x24/fr.png" alt="FR">
+                    </button>
+                    <button class="lang-btn" data-lang="it" title="Italiano">
+                        <img src="https://flagcdn.com/32x24/it.png" alt="IT">
+                    </button>
+                </div>
+
+                <nav class="nav">
+                    <a href="index.html" data-i18n="nav_home">Start</a>
+                    <a href="levels.html" class="active" data-i18n="nav_levels">10 Levels</a>
+                    <a href="html-basics.html" data-i18n="nav_html">HTML Grundlagen</a>
+                    <a href="css-basics.html" data-i18n="nav_css">CSS Grundlagen</a>
+                </nav>
             </div>
-            <nav>
-                <a href="index.html" data-i18n="nav_home">Start</a>
-                <a href="levels.html" class="active" data-i18n="nav_levels">10 Levels</a>
-                <a href="html-basics.html" data-i18n="nav_html">HTML Grundlagen</a>
-                <a href="css-basics.html" data-i18n="nav_css">CSS Grundlagen</a>
-            </nav>
+
+            <button id="darkModeToggle" class="theme-btn" aria-label="Dark Mode umschalten">
+                <span class="icon-sun">☀️</span>
+                <span class="icon-moon">🌙</span>
+            </button>
+
+            <button class="menu-btn" aria-label="Menü">MENU</button>
         </div>
     </header>
 
-    <section class="page-header">
-        <div class="container">
-            <h2 data-i18n="levels_title">10 Coding-Levels</h2>
-            <p data-i18n="levels_sub">Lerne Schritt für Schritt HTML & CSS</p>
+    <section class="hero" style="padding:60px 20px 70px;">
+        <div class="hero-grid-overlay" aria-hidden="true"></div>
+        <div class="hero-content">
+            <h1 class="h-display" data-i18n="levels_title">10 Coding-Levels</h1>
+            <p class="hero-text" data-i18n="levels_sub">Lerne Schritt für Schritt HTML & CSS</p>
         </div>
     </section>
 
     <section>
-        <div class="container">
+        <div class="container" style="max-width: 800px;">
             <!-- Fortschrittsbalken -->
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
@@ -56,26 +81,24 @@
 
                 <!-- Aktionen -->
                 <div class="level-actions">
-                    <button class="btn" id="checkBtn" data-i18n="level_check">Prüfen</button>
-                    <button class="btn btn-outline" id="hintBtn">💡 Hinweis <span class="hint-counter">1/3</span></button>
-                    <button class="btn btn-outline" id="explainBtn" data-i18n="level_explain">🤔 Warum ist das so?</button>
-                    <button class="btn btn-outline" id="solutionBtn" data-i18n="level_solution">Lösung zeigen</button>
-                    <button class="btn btn-outline" id="resetBtn" data-i18n="level_reset">Zurücksetzen</button>
+                    <button class="btn-primary" id="checkBtn" data-i18n="level_check">Prüfen</button>
+                    <button class="btn-ghost" id="hintBtn">💡 Hinweis <span class="hint-counter">1/3</span></button>
+                    <button class="btn-ghost" id="explainBtn" data-i18n="level_explain">🤔 Warum ist das so?</button>
+                    <button class="btn-ghost" id="solutionBtn" data-i18n="level_solution">Lösung zeigen</button>
+                    <button class="btn-ghost" id="resetBtn" data-i18n="level_reset">Zurücksetzen</button>
                 </div>
 
                 <!-- Navigation -->
                 <div class="level-nav-buttons">
-                    <button class="btn btn-outline" id="prevBtn" data-i18n="level_prev">← Vorheriges Level</button>
-                    <button class="btn" id="nextBtn" data-i18n="level_next">Nächstes Level →</button>
+                    <button class="btn-ghost" id="prevBtn" data-i18n="level_prev">← Vorheriges Level</button>
+                    <button class="btn-primary" id="nextBtn" data-i18n="level_next">Nächstes Level →</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p data-i18n="footer_text">© 2026 Code4Beginners – Aus Liebe zum Lernen 💜</p>
-        </div>
+    <footer class="footer">
+        <p class="footer-text" data-i18n="footer_text">© 2026 Code4Beginners – Aus Liebe zum Lernen <span class="text-cyan">💜</span></p>
     </footer>
 
     <script src="script.js"></script>
