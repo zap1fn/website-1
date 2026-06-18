@@ -2,11 +2,28 @@
 Thumbs.db
 Desktop.ini
 
-# Editor
+# macOS
+.DS_Store
+.DS_Store?
+
+# Editor / IDE
 *.swp
 *.swo
+*~
 .vscode/
 .idea/
+*.sublime-*
 
-# OS
-.DS_Store
+# opencode config (nicht für andere)
+.opencode/
+
+# Environment / Secrets
+.env
+.env.*
+*.log
+
+# Node / Build (falls später genutzt)
+node_modules/
+dist/
+build/
+*.tsbuildinfo
